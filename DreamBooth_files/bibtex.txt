@@ -1,6 +1,8 @@
-@article{ruiz2022dreambooth,
-  title={DreamBooth: Fine Tuning Text-to-image Diffusion Models for Subject-Driven Generation},
-  author={Ruiz, Nataniel and Li, Yuanzhen and Jampani, Varun and Pritch, Yael and Rubinstein, Michael and Aberman, Kfir},
-  booktitle={arXiv preprint arxiv:2208.12242},
-  year={2022}
+@misc{zhu2024multibooth,
+      title={MultiBooth: Towards Generating All Your Concepts in an Image from Text}, 
+      author={Chenyang Zhu and Kai Li and Yue Ma and Chunming He and Li Xiu},
+      year={2024},
+      eprint={2404.14239},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV}
 }
