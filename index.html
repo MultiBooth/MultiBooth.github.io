@@ -11,6 +11,16 @@
   </head>
 
   <body>
+    <!-- Add header section -->
+    <header>
+      <select id="nav-dropdown" onchange="navigateToSelectedURL()">
+        <option value="" disabled selected>Other works</option>
+        <option value="https://instantswap.github.io/">InstantSwap</option>
+        <option value="https://chenyangzhu1.github.io/">About</option>
+        <!-- <option value="https://www.github.com">GitHub</option> -->
+        <!-- Add more options as needed -->
+      </select>
+    </header>
     <div class="content">
       <h1>
         <strong
@@ -269,5 +279,14 @@
         <a href="https://dreambooth.github.io/">DreamBooth</a>.
       </p>
     </div>
+    <!-- Add the script for navigation -->
+    <script>
+      function navigateToSelectedURL() {
+        var selectedURL = document.getElementById("nav-dropdown").value;
+        if (selectedURL !== "") {
+          window.location.href = selectedURL;
+        }
+      }
+    </script>
   </body>
 </html>
