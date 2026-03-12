@@ -1,292 +1,311 @@
-<html>
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <title>MultiBooth</title>
-    <link href="./MultiBooth_files/style.css" rel="stylesheet" />
-    <script
-      type="text/javascript"
-      src="./MultiBooth_files/jquery.mlens-1.0.min.js"
-    ></script>
-    <script type="text/javascript" src="./MultiBooth_files/jquery.js"></script>
-  </head>
+<!DOCTYPE html>
+<html lang="en">
 
-  <body>
-    <!-- Add header section -->
-    <header>
-      <select id="nav-dropdown" onchange="navigateToSelectedURL()">
-        <option value="" disabled selected>Other works</option>
-        <option value="https://instantswap.github.io/">InstantSwap</option>
-        <option value="https://chenyangzhu1.github.io/">About</option>
-        <!-- <option value="https://www.github.com">GitHub</option> -->
-        <!-- Add more options as needed -->
-      </select>
-    </header>
-    <div class="content">
-      <h1>
-        <strong
-          >MultiBooth: Towards Generating All Your Concepts in an Image from
-          Text</strong
-        >
-      </h1>
-      <p id="authors">
-        <span><a href="https://multibooth.github.io/"></a></span>
-        <a href="https://chenyangzhu1.github.io/">Chenyang Zhu <sup>1</sup> </a>
-        <a href="https://kailigo.github.io/">Kai Li <sup>2✝</sup> </a>
-        <a href="https://mayuelala.github.io/">Yue Ma <sup>1</sup> </a>
-        <a href="https://chunminghe.github.io/">Chunming He <sup>1</sup> </a>
-        <a
-          href="https://scholar.google.com/citations?user=Xrh1OIUAAAAJ&hl=zh-CN&oi=sra"
-          >Xiu Li <sup>1✝</sup> </a
-        ><br />
-        <br />
-        <a style="font-size: 1em">AAAI 2025 </a>
-        <br />
-        <a style="font-size: 0.7em"><sup>✝</sup>Corresponding authors. </a>
-        <br />
-        <span style="font-size: 0.8em; margin-top: 0.5em">
-          <a><sup>1</sup>Tsinghua University, SIGS</a>
-          <a><sup>2</sup>Meta Reality Labs</a>
-        </span>
-      </p>
-      <font>
-        <p style="text-align: center">
-          <a href="hhttps://arxiv.org/abs/2404.14239" target="_blank"
-            >[Paper]</a
-          >
-          &nbsp;&nbsp;&nbsp;&nbsp;
-          <a href="https://github.com/chenyangzhu1/MultiBooth" target="_blank"
-            >[Code]</a
-          >
-          &nbsp;&nbsp;&nbsp;&nbsp;
-          <a href="MultiBooth_files/bibtex.txt" target="_blank">[BibTeX]</a>
-        </p>
-      </font>
-      <br />
-      <img
-        src="./MultiBooth_files/Title-case.png"
-        class="teaser-gif"
-        style="width: 100%"
-      /><br />
-      <!-- <h3 style="text-align: center">
-        <em
-          >It’s like a photo booth, but once the subject is captured, it can be
-          synthesized wherever your dreams take you…</em
-        >
-      </h3> -->
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>MultiBooth</title>
+  <meta name="description"
+    content="MultiBooth: Towards Generating All Your Concepts in an Image from Text. AAAI 2025 project page." />
+  <meta name="keywords"
+    content="MultiBooth, image generation, multi-concept customization, diffusion models, AAAI 2025" />
+  <meta name="author" content="Chenyang Zhu, Kai Li, Yue Ma, Chunming He, Xiu Li" />
+  <meta property="og:title" content="MultiBooth" />
+  <meta property="og:description" content="Towards Generating All Your Concepts in an Image from Text." />
+  <meta property="og:image" content="./MultiBooth_files/Title-case.png" />
+  <meta property="og:type" content="article" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Manrope:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css" />
+  <link rel="stylesheet" href="static/css/index.css" />
+  <script defer src="static/js/index.js"></script>
+</head>
+
+<body>
+  <button class="scroll-to-top" id="scrollToTopButton" type="button" aria-label="Scroll to top" title="Scroll to top">
+    <i class="fas fa-chevron-up" aria-hidden="true"></i>
+  </button>
+
+  <div class="more-works-container" id="moreWorksContainer">
+    <button class="more-works-btn" id="moreWorksToggle" type="button" aria-expanded="false"
+      aria-controls="moreWorksDropdown">
+      <span class="button-icon"><i class="fas fa-flask" aria-hidden="true"></i></span>
+      <span>More Works</span>
+      <i class="fas fa-chevron-down dropdown-arrow" aria-hidden="true"></i>
+    </button>
+    <div class="more-works-dropdown" id="moreWorksDropdown" hidden>
+      <div class="dropdown-header">
+        <div>
+          <p class="dropdown-eyebrow">Related Links</p>
+          <h2>More Works</h2>
+        </div>
+        <button class="close-btn" id="moreWorksClose" type="button" aria-label="Close more works menu">
+          <i class="fas fa-times" aria-hidden="true"></i>
+        </button>
+      </div>
+      <div class="works-list">
+        <a href="https://instantswap.github.io/" class="work-item" target="_blank" rel="noopener noreferrer">
+          <div class="work-info">
+            <h5>InstantSwap</h5>
+            <p>A novel training-free customized concept swapping framework, which enables efficient concept swapping
+              across sharp shape differences.</p>
+            <span class="work-venue">ICLR 2025</span>
+          </div>
+          <i class="fas fa-external-link-alt"></i>
+        </a>
+        <a href="https://chenyangzhu1.github.io/MoKus/" class="work-item" target="_blank" rel="noopener noreferrer">
+          <div class="work-info">
+            <h5>MoKus</h5>
+            <p>We observe that editing knowledge in the text encoder transfers to visual generation, and propose MoKus to leverage this cross-modal knowledge transfer to enable knowledge-aware concept customization.</p>
+            <span class="work-venue">Arxiv 2026</span>
+          </div>
+          <i class="fas fa-external-link-alt"></i>
+        </a>
+        <a class="work-item" href="https://chenyangzhu1.github.io/" target="_blank" rel="noreferrer">
+          <div class="work-info">
+            <h3>About me</h3>
+            <p>Take a look at my personal homepage.</p>
+            <span class="work-venue">Homepage</span>
+          </div>
+          <i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i>
+        </a>
+      </div>
     </div>
-    <div class="content">
-      <h2>Abstract</h2>
-      <p>
-        This paper introduces MultiBooth, a novel and efficient technique for
-        multi-concept customization in image generation from text. Despite the
-        significant advancements in customized generation methods, particularly
-        with the success of diffusion models, existing methods often struggle
-        with multi-concept scenarios due to low concept fidelity and high
-        inference cost. MultiBooth addresses these issues by dividing the
-        multi-concept generation process into two phases: a single-concept
-        learning phase and a multi-concept integration phase. During the
-        single-concept learning phase, we employ a multi-modal image encoder and
-        an efficient concept encoding technique to learn a concise and
-        discriminative representation for each concept. In the multi-concept
-        integration phase, we use bounding boxes to define the generation area
-        for each concept within the cross-attention map. This method enables the
-        creation of individual concepts within their specified regions, thereby
-        facilitating the formation of multi-concept images. This strategy not
-        only improves concept fidelity but also reduces additional inference
-        cost. MultiBooth surpasses various baselines in both qualitative and
-        quantitative evaluations, showcasing its superior performance and
-        computational efficiency.
-      </p>
+  </div>
+
+  <main id="main-content">
+    <section class="hero publication-header">
+      <div class="hero-body">
+        <div class="container is-max-desktop">
+          <div class="columns is-centered">
+            <div class="column has-text-centered">
+              <h1 class="title is-1 publication-title">
+                MultiBooth: Towards Generating All Your Concepts in an Image from Text
+              </h1>
+              <div class="is-size-5 publication-authors">
+                <span class="author-block">
+                  <a href="https://chenyangzhu1.github.io/" target="_blank" rel="noreferrer">Chenyang
+                    Zhu</a><sup>1</sup>
+                </span>
+                <span class="author-block">
+                  <a href="https://kailigo.github.io/" target="_blank" rel="noreferrer">Kai Li</a><sup>2&#10013;</sup>
+                </span>
+                <span class="author-block">
+                  <a href="https://mayuelala.github.io/" target="_blank" rel="noreferrer">Yue Ma</a><sup>1</sup>
+                </span>
+                <span class="author-block">
+                  <a href="https://chunminghe.github.io/" target="_blank" rel="noreferrer">Chunming He</a><sup>1</sup>
+                </span>
+                <span class="author-block">
+                  <a href="https://scholar.google.com/citations?user=Xrh1OIUAAAAJ&hl=zh-CN&oi=sra" target="_blank"
+                    rel="noreferrer">Xiu Li</a><sup>1&#10013;</sup>
+                </span>
+              </div>
+              <div class="publication-meta">
+                <p class="publication-affiliations">
+                  <span><sup>1</sup>Tsinghua University, SIGS</span>
+                  <span><sup>2</sup>Meta Reality Labs</span>
+                </p>
+                <p class="publication-note"><sup>&#10013;</sup>Corresponding authors.</p>
+              </div>
+              <p class="publication-kicker">AAAI 2025</p>
+              <div class="publication-links">
+                <span class="link-block">
+                  <a href="https://arxiv.org/pdf/2404.14239.pdf" target="_blank" rel="noreferrer"
+                    class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon"><i class="fas fa-file-pdf" aria-hidden="true"></i></span>
+                    <span>Paper</span>
+                  </a>
+                </span>
+                <span class="link-block">
+                  <a href="https://arxiv.org/abs/2404.14239" target="_blank" rel="noreferrer"
+                    class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon"><i class="ai ai-arxiv" aria-hidden="true"></i></span>
+                    <span>arXiv</span>
+                  </a>
+                </span>
+                <span class="link-block">
+                  <a href="https://github.com/chenyangzhu1/MultiBooth" target="_blank" rel="noreferrer"
+                    class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon"><i class="fab fa-github" aria-hidden="true"></i></span>
+                    <span>Code</span>
+                  </a>
+                </span>
+                <span class="link-block">
+                  <a href="./MultiBooth_files/bibtex.txt" target="_blank" rel="noreferrer"
+                    class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon"><i class="fas fa-quote-right" aria-hidden="true"></i></span>
+                    <span>BibTeX</span>
+                  </a>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="hero teaser">
+      <div class="hero-body">
+        <div class="container is-max-desktop">
+          <figure class="publication-figure">
+            <img src="./MultiBooth_files/Title-case.png" alt="MultiBooth title figure" loading="eager" />
+          </figure>
+          <p class="hero-caption">
+            MultiBooth divides multi-concept customization into a concise single-concept
+            learning stage and a region-aware integration stage.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-shell is-emphasis" id="abstract">
+      <div class="container is-max-desktop">
+        <div class="section-card text-card">
+          <h2 class="title is-3">Abstract</h2>
+          <div class="content project-copy project-copy-centered">
+            <p>
+              This paper introduces MultiBooth, a novel and efficient technique for
+              multi-concept customization in image generation from text. Despite the
+              significant advancements in customized generation methods, particularly with
+              the success of diffusion models, existing methods often struggle with
+              multi-concept scenarios due to low concept fidelity and high inference cost.
+              MultiBooth addresses these issues by dividing the multi-concept generation
+              process into two phases: a single-concept learning phase and a
+              multi-concept integration phase. During the single-concept learning phase, we
+              employ a multi-modal image encoder and an efficient concept encoding
+              technique to learn a concise and discriminative representation for each
+              concept. In the multi-concept integration phase, we use bounding boxes to
+              define the generation area for each concept within the cross-attention map.
+              This method enables the creation of individual concepts within their
+              specified regions, thereby facilitating the formation of multi-concept
+              images. This strategy not only improves concept fidelity but also reduces
+              additional inference cost. MultiBooth surpasses various baselines in both
+              qualitative and quantitative evaluations, showcasing its superior
+              performance and computational efficiency.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-shell" id="approach">
+      <div class="container is-max-desktop">
+        <div class="section-heading">
+          <h2 class="title is-3">Approach</h2>
+          <p class="section-lead">
+            Given a series of images that represent some concepts of interest, the goal of
+            multi-concept customization (MCC) is to generate images that include any
+            number of concepts in various styles, contexts, layout relationship as
+            specified by given text prompts.
+          </p>
+        </div>
+        <div class="section-card figure-card">
+          <figure class="detail-figure">
+            <img src="./MultiBooth_files/Framework.png" alt="Overview of the MultiBooth framework" loading="lazy" />
+          </figure>
+          <div class="content project-copy">
+            <p>
+              The overall pipeline of MultiBooth can be divided into two phases: (a)
+              During the single-concept learning phase, a multi-modal encoder and LoRA
+              parameters are trained to encode every single concept. (b) During the
+              multi-concept integration phase, the customized embeddings S* and V* are
+              converted into text embeddings, which are then combined with the
+              corresponding LoRA parameters to form single-concept modules. These
+              single-concept modules, along with the bounding boxes, are intended to serve
+              as input for the regional customization module.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-shell is-emphasis" id="results">
+      <div class="container is-max-desktop">
+        <div class="section-heading">
+          <h2 class="title is-3">Results</h2>
+          <p class="section-lead">
+            Here we demonstrate the customized images generated by different methods. We
+            qualitatively compare our approach with the most recent open-sourced
+            state-of-the-art customization methods, including Textual Inversion,
+            DreamBooth, Custom Diffusion and Cones2.
+          </p>
+        </div>
+        <div class="section-card figure-card">
+          <figure class="detail-figure">
+            <img src="./MultiBooth_files/main_compare.png"
+              alt="Qualitative comparison of MultiBooth against prior methods" loading="lazy" />
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-shell" id="ablation">
+      <div class="container is-max-desktop">
+        <div class="section-heading">
+          <h2 class="title is-3">Ablation Study</h2>
+          <p class="section-lead">
+            We visualize the impact of removing specific components from our framework
+            individually to demonstrate the importance of these methods.
+          </p>
+        </div>
+        <div class="section-card figure-card">
+          <figure class="detail-figure">
+            <img src="./MultiBooth_files/Ablation_study.png" alt="Ablation study for MultiBooth" loading="lazy" />
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-shell is-emphasis" id="bibtex">
+      <div class="container is-max-desktop">
+        <div class="section-card">
+          <div class="bibtex-header">
+            <div>
+              <h2 class="title is-3">BibTeX</h2>
+              <p class="section-lead">Citation entry for the MultiBooth paper.</p>
+            </div>
+            <button class="copy-bibtex-btn" id="copyBibtexButton" type="button">
+              <i class="fas fa-copy" aria-hidden="true"></i>
+              <span class="copy-label">Copy</span>
+            </button>
+          </div>
+          <pre id="bibtex-code"><code>@misc{zhu2024multibooth,
+  title={MultiBooth: Towards Generating All Your Concepts in an Image from Text},
+  author={Chenyang Zhu and Kai Li and Yue Ma and Chunming He and Xiu Li},
+  year={2024},
+  eprint={2404.14239},
+  archivePrefix={arXiv},
+  primaryClass={cs.CV}
+}</code></pre>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="columns is-centered">
+        <div class="column is-8">
+          <div class="content footer-copy">
+            <p>
+              This page keeps the original MultiBooth project content while adopting the
+              structure of the
+              <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank"
+                rel="noreferrer">Academic Project Page Template</a>, which was adapted from
+              <a href="https://nerfies.github.io" target="_blank" rel="noreferrer">Nerfies</a>.
+            </p>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="content">
-      <h2>Approach</h2>
-      <p>
-        Given a series of images that represent some concepts of interest, the
-        goal of multi-concept customization (MCC) is to generate images that
-        include any number of concepts in various styles, contexts, layout
-        relationship as specified by given text prompts.
-      </p>
-      <br />
-      <img
-        class="summary-img"
-        src="./MultiBooth_files/Framework.png"
-        style="width: 100%"
-      />
-      <br />
-      <p>
-        The overall pipeline of MultiBooth can be devided into two phase: (a)
-        During the single-concept learning phase, a multi-modal encoder and LoRA
-        parameters are trained to encode every single concept. (b) During the
-        multi-concept integration phase, the customized embeddings S* and V* are
-        converted into text embeddings, which are then combined with the
-        corresponding LoRA parameters to form single-concept modules. These
-        single-concept modules, along with the bounding boxes, are intended to
-        serve as input for the regional customization module.
-      </p>
-      <!-- <br />
-      <img
-        class="summary-img"
-        src="./MultiBooth_files/system.png"
-        style="width: 100%"
-      />
-      <br /> -->
-    </div>
-    <div class="content">
-      <h2>Results</h2>
-      <p>
-        Here we demonstrate the customized images generated by different
-        methods. We qualitatively compare our approach with the most recent
-        open-sourced state-of-the-art customization methods, including Textual
-        Inversion, DreamBooth, Custom Diffusion and Cones2.
-      </p>
-      <img
-        class="summary-img"
-        src="./MultiBooth_files/main_compare.png"
-        style="width: 100%"
-      />
-    </div>
-    <
-    <div class="content">
-      <h2>Ablation Study</h2>
-      <p>
-        We visualize the impact of removing specific components from our
-        framework individually to demonstrate the importance of these methods.
-      </p>
-      <br />
-      <img
-        class="summary-img"
-        src="./MultiBooth_files/Ablation_study.png"
-        style="width: 100%"
-      />
-      <br />
-    </div>
-    <!-- div class="content">
-      <h2>Text-Guided View Synthesis</h2>
-      <p>
-        Our technique can synthesized images with specified viewpoints for a
-        subject cat (left to right: top, bottom, side and back views). Note that
-        the generated poses are different from the input poses, and the
-        background changes in a realistic manner given a pose change. We also
-        highlight the preservation of complex fur patterns on the subject cat's
-        forehead.
-      </p>
-      <br />
-      <img
-        class="summary-img"
-        src="./MultiBooth_files/novel_views.png"
-        style="width: 100%"
-      />
-      <br />
-    </div>
-    <div class="content">
-      <h2>Property Modification</h2>
-      <p>
-        We show color modifications in the first row (using prompts ``a [color]
-        [V] car''), and crosses between a specific dog and different animals in
-        the second row (using prompts ``a cross of a [V] dog and a [target
-        species]''). We highlight the fact that our method preserves unique
-        visual features that give the subject its identity or essence, while
-        performing the required property modification.
-      </p>
-      <br />
-      <img
-        class="summary-img"
-        src="./MultiBooth_files/property_modification.png"
-        style="width: 100%"
-      />
-      <br />
-    </div>
-    <div class="content">
-      <h2>Accessorization</h2>
-      <p>
-        Outfitting a dog with accessories. The identity of the subject is
-        preserved and many different outfits or accessories can be applied to
-        the dog given a prompt of type
-        <em>"a [V] dog wearing a police/chef/witch outfit''</em>. We observe a
-        realistic interaction between the subject dog and the outfits or
-        accessories, as well as a large variety of possible options.
-      </p>
-      <br />
-      <img
-        class="summary-img"
-        src="./MultiBooth_files/accessories.png"
-        style="width: 100%"
-      />
-      <br />
-    </div>
-    <div class="content">
-      <h2>Societal Impact</h2>
-      <p>
-        This project aims to provide users with an effective tool for
-        synthesizing personal subjects (animals, objects) in different contexts.
-        While general text-to-image models might be biased towards specific
-        attributes when synthesizing images from text, our approach enables the
-        user to get a better reconstruction of their desirable subjects. On
-        contrary, malicious parties might try to use such images to mislead
-        viewers. This is a common issue, existing in other generative models
-        approaches or content manipulation techniques. Future research in
-        generative modeling, and specifically of personalized generative priors,
-        must continue investigating and revalidating these concerns.
-      </p>
-      <br />
-    </div> -->
-    <!-- <div class="content">
-      <h2>BibTex</h2>
-      <code>
-        @article{ruiz2022dreambooth,<br />
-        &nbsp;&nbsp;title={DreamBooth: Fine Tuning Text-to-image Diffusion
-        Models for Subject-Driven Generation},<br />
-        &nbsp;&nbsp;author={Ruiz, Nataniel and Li, Yuanzhen and Jampani, Varun
-        and Pritch, Yael and Rubinstein, Michael and Aberman, Kfir},<br />
-        &nbsp;&nbsp;booktitle={arXiv preprint arxiv:2208.12242},<br />
-        &nbsp;&nbsp;year={2022}<br />
-        }
-      </code>
-    </div> -->
-    <!-- <div class="content" id="acknowledgements">
-      <p>
-        <strong>Acknowledgements</strong>: We thank Rinon Gal, Adi Zicher, Ron
-        Mokady, Bill Freeman, Dilip Krishnan, Huiwen Chang and Daniel Cohen-Or
-        for their valuable inputs that helped improve this work, and to Mohammad
-        Norouzi, Chitwan Saharia and William Chan for providing us with their
-        support and the pretrained models of Imagen. Finally, a special thank
-        you to David Salesin for his feedback, advice and for his support for
-        the project.
-      </p>
-    </div> -->
-    <div class="content">
-      <h2>BibTex</h2>
-      <code>
-        @misc{zhu2024multibooth, <br />
-        &nbsp;&nbsp;title={MultiBooth: Towards Generating All Your Concepts in
-        an Image from Text}, <br />
-        &nbsp;&nbsp;author={Chenyang Zhu and Kai Li and Yue Ma and Chunming He
-        and Li Xiu}, <br />
-        &nbsp;&nbsp;year={2024}, <br />
-        &nbsp;&nbsp;eprint={2404.14239},<br />
-        &nbsp;&nbsp;archivePrefix={arXiv}, <br />
-        &nbsp;&nbsp;primaryClass={cs.CV} }<br />
-      </code>
-    </div>
-    <!-- <div class="content" id="acknowledgements">
-      <p>
-        <strong>Acknowledgements</strong>: We thank Shuoyang Sun and Shuyan Li for their support 
-      </p>
-    </div> -->
-    <div class="content">
-      <p class="serif">
-        Project page template is borrowed from
-        <a href="https://dreambooth.github.io/">DreamBooth</a>.
-      </p>
-    </div>
-    <!-- Add the script for navigation -->
-    <script>
-      function navigateToSelectedURL() {
-        var selectedURL = document.getElementById("nav-dropdown").value;
-        if (selectedURL !== "") {
-          window.location.href = selectedURL;
-        }
-      }
-    </script>
-  </body>
+  </footer>
+</body>
+
 </html>
