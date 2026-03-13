@@ -66,3 +66,10 @@ test('abstract copy is centered', () => {
     /\.project-copy-centered\s*\{[^}]*text-align:\s*center;/s,
   );
 });
+
+test('homepage does not expose a Code button in the publication links', () => {
+  assert.doesNotMatch(
+    html,
+    /<a href="https:\/\/github\.com\/chenyangzhu1\/MultiBooth"[\s\S]*?<span>Code<\/span>/,
+  );
+});
